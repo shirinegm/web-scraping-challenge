@@ -6,21 +6,21 @@ import json
 app = Flask(__name__)
 
 # Use flask_pymongo to set up mongo connection
-mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_mission_db")
+mongo = PyMongo(app, uri="mongodb://localhost:27017/mission_db")
 
 
 @app.route("/")
 def index():
-    mars_collections = mongo.db.mars_collections.find_one()
-    return render_template("index.html", mars_collections=mars_collections)
+    mars_col = mongo.db.mars_col.find_one()
+    return render_template("index.html", mars_col=mars_col)
 
 
 @app.route("/scrape")
 def scraper():
-    mars_collections = mongo.db.mars_collections
+    mars_col = mongo.db.mars_col
     mars_data = scrape_mars.scrape()
     mars_dict = json.loads(mars_data)
-    mars_collections.update({}, mars_dict, upsert=True)
+    mars_col.update({}, mars_dict, upsert=True)
     return redirect("/", code=302)
 
 
