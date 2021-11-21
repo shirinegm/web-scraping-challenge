@@ -117,7 +117,7 @@ def scrape():
         imageinfo = soup.find('div', class_='cover')
         title = imageinfo.find('h2', class_='title').text
         relimageurl = imageinfo.find('a', href=True)
-        imageurl = url + relimageurl['href']
+        imageurl = 'https://marshemispheres.com/' + relimageurl['href']
         
         # Populate the dictionary with the retrieved info
         dict = {"title": title, "img_url": imageurl}
