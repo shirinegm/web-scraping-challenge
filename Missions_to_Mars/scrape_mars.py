@@ -136,7 +136,7 @@ def scrape():
                         "featured_image": featured_image_url,
                         "facts": facts_html,
                         "hemispheres": image_list}
-    dict = json.dumps(scrape())
+    dict = json.dumps(scrape_results)
     return dict
 
 #-------- Use to check correctly formatted json
