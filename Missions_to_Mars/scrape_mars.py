@@ -91,7 +91,8 @@ def scrape():
     facts_df = facts_df.set_index('Mars - Earth Comparison')
 
     # Save it to a html string
-    facts_html = facts_df.to_html()
+    facts_html = facts_df.to_html(formatters = {'content': lambda k: k.replace('\n', '')},
+   escape = False, classes=["table table-hover", "table-striped", "table-hover"])
 
     #--------------- Scrape Source 4 - Mars Hemispheres ------------------------#
     # Declare the list of urls to go after
