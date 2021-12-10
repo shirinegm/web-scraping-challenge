@@ -29,25 +29,23 @@
         <h2 class="heading">Mars Latest News</h2>
         <div class="bs-component">
             <div class="list-group">
+              {% for article in mars_col['news_articles'][:1] %}
               <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">{{ mars_col.news_articles[0]['title'] }}</h4>
-                <p class="list-group-item-text">{{ mars_col.news_articles[0]['paragraph'] }}</p>
+                <h4 class="list-group-item-heading">{{ article['title'] }}</h4>
+                <p class="list-group-item-text">{{ article['paragraph'] }}</p>
               </a>
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">{{ mars_col.news_articles[1]['title'] }}</h4>
-                <p class="list-group-item-text">{{ mars_col.news_articles[1]['paragraph'] }}</p>
-              </a>
+              {% endfor %}
             </div>
           </div>
       </div>
     </div>
 
     <!-- Mars Image and Facts -->
-    <div class="row">
-      <div class="col-md-7">
+    <div class="row"> 
+      <div class="col-md-7"> 
           <h2 class="heading">Featured Mars Image</h2>
           <img src=" {{ mars_col.featured_image }} " alt="Featured Image">
-      </div>
+      </div> 
       <div class="col-md-5">
           <h2 class="heading">Mars Facts</h2>
           <div class="bs-component"> {{ mars_col.facts|safe }} </div>
@@ -57,62 +55,23 @@
     <br>
     <!--Hemispheres-->
     <div class="row">
+      {% for hemi in mars_col.hemispheres %}
       <div class="col-md-3">
         <div class="bs-component">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title">{{mars_col.hemispheres[0]['title']}}</h3>
+              <h3 class="panel-title">{{ hemi['title']}}</h3>
             </div>
             <div class="panel-body">
-              <a href="{{mars_col.hemispheres[0]['img_url']}}" target="_blank">
+              <a href="{{hemi['img_url']}}" target="_blank">
                 <img src="../static/Resources/hemi0.png" alt="hemisphere1">
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="bs-component">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{mars_col.hemispheres[1]['title']}}</h3>
-            </div>
-            <div class="panel-body">
-              <a href="{{mars_col.hemispheres[1]['img_url']}}" target="_blank">
-                <img src="../static/Resources/hemi1.png" alt="hemisphere2">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="bs-component">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{mars_col.hemispheres[2]['title']}}</h3>
-            </div>
-            <div class="panel-body">
-              <a href="{{mars_col.hemispheres[2]['img_url']}}" target="_blank">
-                <img src="../static/Resources/hemi2.png" alt="hemisphere3">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="bs-component">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{mars_col.hemispheres[3]['title']}}</h3>
-            </div>
-            <div class="panel-body">
-              <a href="{{mars_col.hemispheres[3]['img_url']}}" target="_blank">
-                <img src="../static/Resources/hemi3.png" alt="hemisphere4">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
+
     </div>
   </div>
 </body>
